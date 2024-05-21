@@ -1,4 +1,4 @@
-import 'package:firebase1/auth.dart';
+/*import 'package:firebase1/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase1/home_page.dart';
 import 'login_register_page.dart';
@@ -27,3 +27,4 @@ class _WidgetTreeState extends State<WidgetTree> {
     );
   }
 }
+*/

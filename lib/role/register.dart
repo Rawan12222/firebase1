@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 import 'login.dart';
 // import 'model.dart';
 
@@ -11,7 +12,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  _RegisterState();
+  _RegisterState(); /////////////////////////////////////////////////////////// important
 
   bool showProgress = false;
   bool visible = false;
@@ -20,31 +21,31 @@ class _RegisterState extends State<Register> {
   final _auth = FirebaseAuth.instance;
 
   final TextEditingController passwordController = new TextEditingController();
-  final TextEditingController confirmpassController =
-      new TextEditingController();
+  //final TextEditingController confirmpassController =
+    //  new TextEditingController();
   final TextEditingController name = new TextEditingController();
   final TextEditingController emailController = new TextEditingController();
-  final TextEditingController mobile = new TextEditingController();
+  //final TextEditingController mobile = new TextEditingController();
   bool _isObscure = true;
-  bool _isObscure2 = true;
+  //bool _isObscure2 = true;
   //File? file;
 
   var options = [
-    'Student',
-    'Teacher',
+    'Customer',
+    'Driver',
   ];
-  var _currentItemSelected = "Student";
-  var rool = "Student";
+  var _currentItemSelected = "Customer";
+  var rool = "Customer";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[900],
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.orangeAccent[700],
+              color: Colors.white,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: SingleChildScrollView(
@@ -113,6 +114,7 @@ class _RegisterState extends State<Register> {
                           obscureText: _isObscure,
                           controller: passwordController,
                           decoration: InputDecoration(
+                            
                             suffixIcon: IconButton(
                                 icon: Icon(_isObscure
                                     ? Icons.visibility_off
@@ -150,50 +152,7 @@ class _RegisterState extends State<Register> {
                           },
                           onChanged: (value) {},
                         ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        TextFormField(
-                          obscureText: _isObscure2,
-                          controller: confirmpassController,
-                          decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                                icon: Icon(_isObscure2
-                                    ? Icons.visibility_off
-                                    : Icons.visibility),
-                                onPressed: () {
-                                  setState(() {
-                                    _isObscure2 = !_isObscure2;
-                                  });
-                                }),
-                            filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'Confirm Password',
-                            enabled: true,
-                            contentPadding: const EdgeInsets.only(
-                                left: 14.0, bottom: 8.0, top: 15.0),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
-                            ),
-                          ),
-                          validator: (value) {
-                            if (confirmpassController.text !=
-                                passwordController.text) {
-                              return "Password did not match";
-                            } else {
-                              return null;
-                            }
-                          },
-                          onChanged: (value) {},
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
+                        
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -202,104 +161,101 @@ class _RegisterState extends State<Register> {
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.white,
+                                color: Colors.black,
                               ),
                             ),
 
                     /////////////////////////////////////////        //////////////////////////////////////////////////////////////////////
-                            DropdownButton<String>(
-                              dropdownColor: Colors.blue[900],
-                              isDense: true,
-                              isExpanded: false,
-                              iconEnabledColor: Colors.white,
-                              focusColor: Colors.white,
-                              items: options.map((String dropDownStringItem) {
-                                return DropdownMenuItem<String>(
-                                  value: dropDownStringItem,
-                                  child: Text(
-                                    dropDownStringItem,
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20,
+                            Padding(
+                              padding: const EdgeInsets.all(20.0),
+                              child: DropdownButton<String>(
+                                dropdownColor: Colors.grey,
+                                isDense: true,
+                                isExpanded: false,
+                                iconEnabledColor: Colors.black,
+                                focusColor: Colors.black,
+                                items: options.map((String dropDownStringItem) {
+                                  return DropdownMenuItem<String>(
+                                    value: dropDownStringItem,
+                                    child: Text(
+                                      dropDownStringItem,
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              }).toList(),
-                              onChanged: (newValueSelected) {
-                                setState(() {
-                                  _currentItemSelected = newValueSelected!;
-                                  rool = newValueSelected;
-                                });
-                              },
-                              value: _currentItemSelected,
+                                  );
+                                }).toList(),
+                                onChanged: (newValueSelected) {
+                                  setState(() {
+                                    _currentItemSelected = newValueSelected!;
+                                    rool = newValueSelected;
+                                  });
+                                },
+                                value: _currentItemSelected,
+                              ),
                             ),
                           ],
                         ),
                         SizedBox(
                           height: 20,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0))),
-                              elevation: 5.0,
-                              height: 40,
-                              onPressed: () {
-                                CircularProgressIndicator();
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginPage(),
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20.0))),
+                                elevation: 5.0,
+                                height: 40,
+                                onPressed: () {
+                                  CircularProgressIndicator();
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LoginPage(),
+                                    ),
+                                  );
+                                },
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(
+                                    fontSize: 20,
                                   ),
-                                );
-                              },
-                              child: Text(
-                                "Login",
-                                style: TextStyle(
-                                  fontSize: 20,
                                 ),
+                                color: Colors.white,
                               ),
-                              color: Colors.white,
-                            ),
-                            MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20.0))),
-                              elevation: 5.0,
-                              height: 40,
-                              onPressed: () {
-                                setState(() {
-                                  showProgress = true;
-                                });
-                                signUp(emailController.text,
-                                    passwordController.text, rool);
-                              },
-                              child: Text(
-                                "Register",
-                                style: TextStyle(
-                                  fontSize: 20,
+                              MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20.0))),
+                                elevation: 5.0,
+                                height: 40,
+                                onPressed: () {
+                                  setState(() {
+                                    showProgress = true;
+                                  });
+                                  signUp(emailController.text,
+                                      passwordController.text, rool);
+                                },
+                                child: Text(
+                                  "Register",
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
                                 ),
+                                color: Colors.white,
                               ),
-                              color: Colors.white,
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          "WEBFUN",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.yellowAccent[400],
+                            ],
                           ),
                         ),
+                        
+                        
                       ],
                     ),
                   ),

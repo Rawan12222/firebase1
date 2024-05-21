@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 
 import 'login.dart';
 
-class Student extends StatefulWidget {
-  const Student({super.key});
+class Customer extends StatefulWidget {
+  const Customer({super.key});
 
   @override
-  State<Student> createState() => _StudentState();
+  State<Customer> createState() => _CustomerState();
 }
 
-class _StudentState extends State<Student> {
+class _CustomerState extends State<Customer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Student"),
+        backgroundColor: Colors.white,
+        title: Text("Customer",  style: TextStyle(color: Colors.black)),
         actions: [
           IconButton(
             onPressed: () {
@@ -23,13 +24,15 @@ class _StudentState extends State<Student> {
             },
             icon: Icon(
               Icons.logout,
+              color: Colors.black,
             ),
           )
         ],
       ),
-    );
+      
+      
+      );
   }
-
   Future<void> logout(BuildContext context) async {
     CircularProgressIndicator();
     await FirebaseAuth.instance.signOut();

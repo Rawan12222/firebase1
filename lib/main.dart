@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'widget_tree.dart';
 
@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
       home: const WidgetTree(),
     );
   }
-}
+}*/
 
 
 
 
-/*
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -57,4 +57,4 @@ class _MyAppState extends State<MyApp> {
       home: Register(),
     );
   }
-}*/
+}

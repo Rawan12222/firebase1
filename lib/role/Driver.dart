@@ -3,19 +3,20 @@ import 'package:flutter/material.dart';
 
 import 'login.dart';
 
-class Teacher extends StatefulWidget {
-  const Teacher({super.key});
+class Driver extends StatefulWidget {
+  const Driver({super.key});
 
   @override
-  State<Teacher> createState() => _TeacherState();
+  State<Driver> createState() => _DriverState();
 }
 
-class _TeacherState extends State<Teacher> {
+class _DriverState extends State<Driver> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Teacher"),
+        backgroundColor: Colors.white,
+        title: Text("Driver", style: TextStyle(color: Colors.black),),
         actions: [
           IconButton(
             onPressed: () {
@@ -23,6 +24,7 @@ class _TeacherState extends State<Teacher> {
             },
             icon: Icon(
               Icons.logout,
+              color: Colors.black,
             ),
           )
         ],

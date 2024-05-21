@@ -1,8 +1,8 @@
-import 'package:firebase1/role/teacher.dart';
-import 'package:firebase1/role/student.dart';
+import 'package:firebase1/role/Driver.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'Customer.dart';
 import 'register.dart';
 
 
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.orangeAccent[700],
+              color: Colors.white,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.70,
               child: Center(
@@ -46,7 +46,7 @@ class _LoginPageState extends State<LoginPage> {
                           "Login",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 40,
                           ),
                         ),
@@ -188,9 +188,9 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         );
                       },
-                      color: Colors.blue[900],
+                      color: Colors.grey[700],
                       child: Text(
-                        "Register Now",
+                        "Register ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20,
@@ -218,18 +218,18 @@ class _LoginPageState extends State<LoginPage> {
             .get()
             .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
-        if (documentSnapshot.get('rool') == "Teacher") {
+        if (documentSnapshot.get('rool') == "Driver") {
            Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) =>  Teacher(),
+            builder: (context) =>  Driver(),
           ),
         );
         }else{
           Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) =>  Student(),
+            builder: (context) =>  Customer(),
           ),
         );
         }
@@ -258,5 +258,7 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 }
+
+
 
 
