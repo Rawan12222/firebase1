@@ -40,6 +40,7 @@ class HomePage extends StatelessWidget {
           height: double.infinity,
           width:  double.infinity,
           child: Column(children: [
+            Text("rrrrrrrrrrrr"),
             _userUid(),
             _signOutButton()
           ],),

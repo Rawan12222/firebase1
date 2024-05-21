@@ -98,6 +98,7 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              //Text("rrrrrrr"),
         
               _entryField('email', _controllerEmail),
               _entryField('password', _controllerPassword),
